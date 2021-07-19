@@ -1,0 +1,40 @@
+@import '@/variables.scss';
+
+//todo__App.vue__
+
+#app {
+	color: red;
+}
+
+//todo___v-main-wrapper__
+
+.v-main-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 900px;
+	margin: 0 auto;
+	margin: $margin;
+	background-color: red;
+}
+
+//todo__v-catalog-item__
+
+.v-catalog-item {
+	flex-basis: 25%;
+	box-shadow: 0 0 8px 0 #e0e0e0;
+	padding: $padding;
+	margin-bottom: $margin;
+	height: 400px;
+	border-radius: $radius;
+	background-color: red;
+}
+
+//todo---------------------------------
+
+
+
+.btn {
+	border-radius: $radius;
+}
