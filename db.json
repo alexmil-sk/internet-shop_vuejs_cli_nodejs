@@ -1,42 +1,42 @@
 {
 	"products": [
 		{
-			"image": "blind.jpg",
+			"image": "./assets/img/blind.jpg",
 			"name": "Заглушка",
 			"price": 0,
 			"article": "toy_blind",
 			"available": false
 		},
 		{
-			"image": "kitty.jpg",
+			"image": "./assets/img/kitty.jpg",
 			"name": "Котёнок",
 			"price": 150,
 			"article": "toy01",
 			"available": true
 		},
 		{
-			"image": "leopard.jpg",
+			"image": "./assets/img/leopard.jpg",
 			"name": "Леопард",
 			"price": 200,
 			"article": "toy02",
 			"available": false
 		},
 		{
-			"image": "owl.jpg",
+			"image": "./assets/img/owl.jpg",
 			"name": "Совёнок",
 			"price": 250,
 			"article": "toy03",
 			"available": true
 		},
 		{
-			"image": "piggy.jpg",
+			"image": "./assets/img/piggy.jpg",
 			"name": "Поросёнок",
 			"price": 300,
 			"article": "toy04",
 			"available": false
 		},
 		{
-			"image": "puppy.jpg",
+			"image": "./assets/img/puppy.jpg",
 			"name": "Щенок",
 			"price": 350,
 			"article": "toy05",
