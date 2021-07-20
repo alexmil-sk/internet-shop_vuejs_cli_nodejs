@@ -3,7 +3,7 @@
 	<div class="v-catalog">
 		<div class="catalog-items">
 			<v-catalog-item
-				v-for="product in products"
+				v-for="product in this.$store.state.products"
 				:key="product.article"
 				:product_data="product"
 				@sendArticle="showArticleConsole"
@@ -14,6 +14,7 @@
 
 <script>
 import vCatalogItem from './v-catalog-item';
+import { mapActions } from 'vuex';
 
 
 export default ({
@@ -26,6 +27,8 @@ export default ({
 	data() {
 		return {
 			title: 'Каталог товаров',
+
+			/*
 			products: [
 				{
 					image: "blind.jpg",
@@ -70,12 +73,16 @@ export default ({
 					available: true
 				}
 			],
+			*/
 		}
 	},
 	computed: {
 
 	},
 	methods: {
+		...mapActions([
+			'GET_PRODUCTS_FROM_API'
+		]),
 		showArticleConsole(data) {
 			console.log(data);
 		}
@@ -85,8 +92,7 @@ export default ({
 	//Хуки жизненного цикла
 
 	mounted() {
-		console.log('Hello. Проверка хука mounted Catalog');
-
+		this.GET_PRODUCTS_FROM_API()
 	}
 })
 </script>
