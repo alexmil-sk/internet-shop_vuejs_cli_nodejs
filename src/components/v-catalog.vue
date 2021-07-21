@@ -6,7 +6,7 @@
 				v-for="product in products"
 				:key="product.article"
 				:product_data="product"
-				@sendArticle="showArticleConsole"
+				@addToCartUp="addToCart"
 			/>
 		</div>
 	</div>
@@ -20,7 +20,6 @@ export default ({
 	name: 'v-catalog',
 	components: {
 		vCatalogItem,
-
 	},
 	props: {},
 	data() {
@@ -76,18 +75,15 @@ export default ({
 
 	},
 	methods: {
-		showArticleConsole(data) {
-			console.log(data);
+		addToCart(data) {
+			console.log((data));
 		}
 	},
 	watch: {},
 	
 	//Хуки жизненного цикла
 
-	mounted() {
-		console.log('Hello. Проверка хука mounted Catalog');
-
-	}
+	mounted() {}
 })
 </script>
 

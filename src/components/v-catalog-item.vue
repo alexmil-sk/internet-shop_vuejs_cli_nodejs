@@ -1,23 +1,22 @@
 <template>
 	<div class="v-catalog-item">
-		<h2>Карточка товара</h2>
+		<h2>{{ title }}</h2>
 		<h2>{{ product_data.name }}</h2>
 		<img :src="require('../assets/img/' + product_data.image)" :alt="product_data.article">
 		<p class="v-catalog-item__price">Price: {{ product_data.price }} &#8381;</p>
 		<button
 			class="v-catalog-item__addBtn btn"
-			@click="sendArticle()"
+			@click="addToCart"
 			>Add to Cart
 		</button>
 	</div>
 </template>
 
 <script>
+
 	export default ({
 		name: 'v-catalog-item',
-		components: {
-
-		},
+		components: {},
 		props: {
 			product_data: {
 				type: Object,
@@ -28,23 +27,20 @@
 		},
 		data() {
 			return {
-				title: 'Item title'
+				title: 'Карточка товара в каталоге'
 			}
 		},
 		computed: {},
 		methods: {
-			sendArticle() {
-				this.$emit('sendArticle', this.product_data.article); 
+			addToCart() {
+				this.$emit('addToCartUp', this.product_data);
 			}
 		},
 		watch: {},
 		
 		//Хуки жизненного цикла
 
-		mounted() {
-			console.log('Hello. Проверка хука mounted Catalog Item');
-
-		}
+		mounted() {}
 	})
 </script>
 
