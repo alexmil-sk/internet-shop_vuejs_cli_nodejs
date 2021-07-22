@@ -1,12 +1,15 @@
 <template>
 	<h1>{{ title }}</h1>
+	<router-link :to="{name: 'cart', params:{cart_data: CART}}">
+		<div class="v-catalog_to-cart">Cart: {{ CART.length }}</div>
+	</router-link>
 	<div class="v-catalog">
-		<div class="catalog-items">
+		<div class="v-catalog-items">
 			<v-catalog-item
-				v-for="product in this.$store.state.products"
+				v-for="product in PRODUCTS"
 				:key="product.article"
 				:product_data="product"
-				@sendArticle="showArticleConsole"
+				@addToCart="addToCart"
 			/>
 		</div>
 	</div>
@@ -14,7 +17,7 @@
 
 <script>
 import vCatalogItem from './v-catalog-item';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 
 export default ({
@@ -28,6 +31,7 @@ export default ({
 		return {
 			title: 'Каталог товаров',
 
+		//,__Каталог товаров находится в файле db.json
 			/*
 			products: [
 				{
@@ -77,14 +81,18 @@ export default ({
 		}
 	},
 	computed: {
-
+		...mapGetters([
+			'PRODUCTS',
+			'CART'
+		]),
 	},
 	methods: {
 		...mapActions([
-			'GET_PRODUCTS_FROM_API'
+			'GET_PRODUCTS_FROM_API',
+			'ADD_TO_CART'
 		]),
-		showArticleConsole(data) {
-			console.log(data);
+		addToCart(data) {
+			this.ADD_TO_CART(data);
 		}
 	},
 	watch: {},
@@ -93,6 +101,11 @@ export default ({
 
 	mounted() {
 		this.GET_PRODUCTS_FROM_API()
+		.then((response) => {
+			if (response.data) {
+				console.log('Data was taken');
+			}
+		})
 	}
 })
 </script>
@@ -105,12 +118,18 @@ export default ({
 		align-items: center;
 		margin: 0 auto;
 	}
-	.catalog-items {
+	.v-catalog-items {
 		padding: 30px;
 		display: flex;
 		outline: 1px solid #000;
 		flex-wrap: wrap;
 		justify-content: space-evenly;
-
+	}
+	.v-catalog_to-cart {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		padding: 16px;
+		border: 1px solid #666;
 	}
 </style>

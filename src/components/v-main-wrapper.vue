@@ -1,39 +1,32 @@
 <template>
 	<div class="v-main-wrapper">
-		<h1 class="h1">{{ title }}</h1>
-		<v-catalog />
-		<v-cart />
+		<keep-alive>
+			<router-view></router-view>
+		</keep-alive>
 
 	</div>
 </template>
 
 <script>
-import vCatalog from './v-catalog';
-import vCart from './v-cart';
+//import vCatalog from './v-catalog';
+//import vCart from './v-cart';
+import { mapGetters } from 'vuex';
 
 export default ({
 	name: 'v-main-wrapper',
-	components: {
-		vCatalog,
-		vCart,
-	},
 	props: {},
 	data() {
 		return {
 			title: 'Интернет-магазин мягких игрушек'
 		}
 	},
-	computed: {
-
-	},
+	computed: {},
 	methods: {},
 	watch: {},
 
 	//Хуки жизненного цикла
 
-	mounted() {
-		console.log('Hello. Проверка хука mounted Main Wraspper');
-	}
+	mounted() {}
 })
 </script>
 
