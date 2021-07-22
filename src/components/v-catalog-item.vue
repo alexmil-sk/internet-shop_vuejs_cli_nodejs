@@ -1,12 +1,12 @@
 <template>
 	<div class="v-catalog-item">
-		<h2>Карточка товара</h2>
+		<h2>Карточка товара в каталоге</h2>
 		<h2>{{ product_data.name }}</h2>
 		<img :src="require('../assets/img/' + product_data.image)" :alt="product_data.article">
 		<p class="v-catalog-item__price">Price: {{ product_data.price }} &#8381;</p>
 		<button
 			class="v-catalog-item__addBtn btn"
-			@click="sendArticle()"
+			@click="addToCart()"
 			>Add to Cart
 		</button>
 	</div>
@@ -33,8 +33,8 @@
 		},
 		computed: {},
 		methods: {
-			sendArticle() {
-				this.$emit('sendArticle', this.product_data.article); 
+			addToCart() {
+				this.$emit('addToCart', this.product_data);
 			}
 		},
 		watch: {},
@@ -42,8 +42,7 @@
 		//Хуки жизненного цикла
 
 		mounted() {
-			console.log('Hello. Проверка хука mounted Catalog Item');
-
+			this.$set(this.cart_item_data, 'quantity', 1)
 		}
 	})
 </script>
